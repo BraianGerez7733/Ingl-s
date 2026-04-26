@@ -5,16 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Tetris de Sofía</title>
 <style>
-:root{--hot:#ff4d8d;--sun:#ffb703;--sky:#00b4d8;--green:#2ec4b6;--purple:#7b61ff;--txt:#172033;--muted:#526071}*{box-sizing:border-box}body{margin:0;min-height:100vh;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;color:var(--txt);background:radial-gradient(circle at 10% 5%,#fff7ad,transparent 26rem),radial-gradient(circle at 90% 15%,#b7f7ff,transparent 25rem),radial-gradient(circle at 50% 100%,#ffd1f2,transparent 30rem),linear-gradient(135deg,#fffdf2,#f1fbff);display:flex;justify-content:center;padding:18px}.app{width:100%;max-width:760px;text-align:center}.label{display:inline-block;background:linear-gradient(90deg,var(--hot),var(--purple));color:white;border-radius:999px;padding:7px 12px;font-size:11px;text-transform:uppercase;letter-spacing:.12em;font-weight:900}h1{font-size:clamp(30px,8vw,48px);margin:10px 0 6px;letter-spacing:-.05em}.sub{color:var(--muted);font-weight:700;margin-bottom:12px}.game{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start;justify-content:center}.boardWrap{background:white;border-radius:24px;padding:14px;box-shadow:0 22px 70px rgba(27,38,59,.16)}canvas{display:block;background:#10182d;border-radius:14px}.side{background:rgba(255,255,255,.78);border-radius:24px;padding:16px;box-shadow:0 16px 45px rgba(27,38,59,.1);min-width:210px}.score{font-size:18px;font-weight:900;margin-bottom:12px}.message{min-height:120px;background:linear-gradient(160deg,#fff,#fff4c8,#ffe4f4);border-radius:20px;padding:18px;display:grid;place-items:center;font-size:23px;font-weight:900;color:#172033;line-height:1.15}.message.pop{animation:pop .45s ease}@keyframes pop{0%{transform:scale(.92)}60%{transform:scale(1.06)}100%{transform:scale(1)}}.controls{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}.btn{border:0;border-radius:16px;padding:13px;background:linear-gradient(135deg,#fff,#eefbff);box-shadow:0 10px 25px rgba(0,180,216,.14);font-weight:900;color:var(--txt)}.btnMain{background:linear-gradient(90deg,var(--hot),var(--purple));color:white}.link{display:inline-block;margin-top:18px;text-decoration:none;background:linear-gradient(135deg,#fff0b3,#ffd1f2);border-radius:999px;padding:12px 18px;color:var(--txt);font-weight:900}.tip{font-size:12px;color:var(--muted);font-weight:700;margin-top:10px}@media(max-width:680px){.game{grid-template-columns:1fr}.boardWrap{margin:auto}.side{min-width:0}.message{min-height:84px}.controls{max-width:320px;margin:14px auto 0}}
+:root{--hot:#ff4d8d;--sun:#ffb703;--sky:#00b4d8;--green:#2ec4b6;--purple:#7b61ff;--txt:#172033;--muted:#526071}*{box-sizing:border-box}body{margin:0;min-height:100vh;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;color:var(--txt);background:radial-gradient(circle at 10% 5%,#fff7ad,transparent 26rem),radial-gradient(circle at 90% 15%,#b7f7ff,transparent 25rem),radial-gradient(circle at 50% 100%,#ffd1f2,transparent 30rem),linear-gradient(135deg,#fffdf2,#f1fbff);display:flex;justify-content:center;padding:18px}.app{width:100%;max-width:760px;text-align:center}.label{display:inline-block;background:linear-gradient(90deg,var(--hot),var(--purple));color:white;border-radius:999px;padding:7px 12px;font-size:11px;text-transform:uppercase;letter-spacing:.12em;font-weight:900}h1{font-size:clamp(30px,8vw,48px);margin:10px 0 6px;letter-spacing:-.05em}.sub{color:var(--muted);font-weight:700;margin-bottom:12px}.game{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start;justify-content:center}.boardWrap{position:relative;background:white;border-radius:24px;padding:14px;box-shadow:0 22px 70px rgba(27,38,59,.16);overflow:hidden}canvas{display:block;background:#10182d;border-radius:14px}.burst{position:absolute;inset:14px;display:grid;place-items:center;pointer-events:none;opacity:0}.burst.show{animation:burstShow .9s ease}.burstText{background:radial-gradient(circle,#fff 0%,#fff7ad 32%,#ff4d8d 68%,#7b61ff 100%);color:#172033;border-radius:999px;padding:18px 22px;font-size:23px;font-weight:1000;line-height:1.08;box-shadow:0 0 0 10px rgba(255,255,255,.45),0 18px 55px rgba(255,77,141,.45);transform:rotate(-4deg)}@keyframes burstShow{0%{opacity:0;transform:scale(.2) rotate(-18deg);filter:saturate(2)}20%{opacity:1;transform:scale(1.15) rotate(6deg)}55%{opacity:1;transform:scale(1) rotate(-3deg)}100%{opacity:0;transform:scale(1.35) rotate(8deg)}}.side{background:rgba(255,255,255,.78);border-radius:24px;padding:16px;box-shadow:0 16px 45px rgba(27,38,59,.1);min-width:210px}.score{font-size:18px;font-weight:900;margin-bottom:12px}.message{min-height:90px;background:linear-gradient(160deg,#fff,#fff4c8,#ffe4f4);border-radius:20px;padding:18px;display:grid;place-items:center;font-size:21px;font-weight:900;color:#172033;line-height:1.15}.controls{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}.btn{border:0;border-radius:16px;padding:13px;background:linear-gradient(135deg,#fff,#eefbff);box-shadow:0 10px 25px rgba(0,180,216,.14);font-weight:900;color:var(--txt)}.btnMain{background:linear-gradient(90deg,var(--hot),var(--purple));color:white}.link{display:inline-block;margin-top:18px;text-decoration:none;background:linear-gradient(135deg,#fff0b3,#ffd1f2);border-radius:999px;padding:12px 18px;color:var(--txt);font-weight:900}.tip{font-size:12px;color:var(--muted);font-weight:700;margin-top:10px}@media(max-width:680px){.game{grid-template-columns:1fr}.boardWrap{margin:auto}.side{min-width:0}.message{min-height:74px}.controls{max-width:320px;margin:14px auto 0}}
 </style>
 </head>
 <body>
 <main class="app">
 <div class="label">Sofía Tetris</div>
 <h1>Sigamos jugando</h1>
-<div class="sub">Modo fácil: completá líneas rápido y recibí frases de ánimo para Sofía ✨</div>
+<div class="sub">Cuando las piezas se tocan, aparece una explosión de ánimo para Sofía ✨</div>
 <section class="game">
-<div class="boardWrap"><canvas id="board" width="240" height="400"></canvas></div>
+<div class="boardWrap"><canvas id="board" width="240" height="400"></canvas><div id="burst" class="burst"><div id="burstText" class="burstText">Sofía, vos podés 💖</div></div></div>
 <aside class="side">
 <div class="score">Puntos: <span id="score">0</span></div>
 <div id="message" class="message">Sofía, vos podés 💖</div>
@@ -26,35 +26,36 @@
 <button class="btn btnMain" id="start">Start</button>
 <button class="btn" id="drop">Drop</button>
 </div>
-<div class="tip">Más fácil: piezas simples, tablero preparado y premio rápido.</div>
+<div class="tip">Sin bloques grandes preparados: cada contacto muestra una frase.</div>
 </aside>
 </section>
 <a class="link" href="index.html">Volver a las flashcards</a>
 </main>
 <script>
-const canvas=document.getElementById('board'),ctx=canvas.getContext('2d'),scoreEl=document.getElementById('score'),msg=document.getElementById('message');
+const canvas=document.getElementById('board'),ctx=canvas.getContext('2d'),scoreEl=document.getElementById('score'),msg=document.getElementById('message'),burst=document.getElementById('burst'),burstText=document.getElementById('burstText');
 const COLS=10,ROWS=20,SIZE=20;ctx.scale(SIZE,SIZE);
 const colors=[null,'#ff4d8d','#00b4d8','#ffb703','#2ec4b6','#7b61ff','#90be6d','#f15bb5'];
-const pieces={O:[[2,2],[2,2]],I:[[5,5,5,5]],T:[[0,1,0],[1,1,1]],L:[[3,0],[3,0],[3,3]]};
+const pieces={O:[[2,2],[2,2]],I:[[5,5,5,5]],T:[[0,1,0],[1,1,1]],L:[[3,0],[3,0],[3,3]],S:[[0,6,6],[6,6,0]]};
 const cheers=['Sofía, vos podés 💖','Sofía, vas a lograr todo ✨','Sofía, Dios te ama 🙏','Sofía, seguí adelante 🌟','Sofía, sos muy valiente 💪','Sofía, brillás cada día ☀️','Sofía, nunca te rindas 🚀','Sofía, estás aprendiendo genial 📚','Sofía, Jesús está con vos ✝️','Sofía, sos una campeona 🏆','Sofía, cada intento cuenta 💫','Sofía, qué bien lo hiciste 🎉'];
-function arena(){return Array.from({length:ROWS},()=>Array(COLS).fill(0))}let grid=arena();let player={pos:{x:0,y:0},matrix:null};let score=0,dropCounter=0,dropInterval=360,last=0,playing=false,spawnCount=0;
-function showCheer(){msg.classList.remove('pop');void msg.offsetWidth;msg.textContent=cheers[Math.floor(Math.random()*cheers.length)];msg.classList.add('pop')}
-function easyBottom(){for(let y=ROWS-4;y<ROWS;y++){grid[y]=Array(COLS).fill(1);grid[y][4]=0;grid[y][5]=0}for(let y=0;y<ROWS-4;y++)grid[y]=Array(COLS).fill(0)}
-function createPiece(){spawnCount++;if(spawnCount%2===0)return [[5,5]];const keys=Object.keys(pieces);const type=keys[Math.floor(Math.random()*keys.length)];return pieces[type].map(r=>r.slice())}
+function arena(){return Array.from({length:ROWS},()=>Array(COLS).fill(0))}let grid=arena();let player={pos:{x:0,y:0},matrix:null};let score=0,dropCounter=0,dropInterval=520,last=0,playing=false,spawnCount=0;
+function randomCheer(){return cheers[Math.floor(Math.random()*cheers.length)]}
+function showBurst(){const text=randomCheer();msg.textContent=text;burstText.textContent=text;burst.classList.remove('show');void burst.offsetWidth;burst.classList.add('show')}
+function createPiece(){spawnCount++;if(spawnCount%3===0)return [[5,5]];const keys=Object.keys(pieces);const type=keys[Math.floor(Math.random()*keys.length)];return pieces[type].map(r=>r.slice())}
 function drawMatrix(m,o){m.forEach((row,y)=>row.forEach((v,x)=>{if(v){ctx.fillStyle=colors[v];ctx.fillRect(x+o.x,y+o.y,1,1);ctx.strokeStyle='rgba(255,255,255,.35)';ctx.lineWidth=.06;ctx.strokeRect(x+o.x,y+o.y,1,1)}}))}
 function draw(){ctx.fillStyle='#10182d';ctx.fillRect(0,0,COLS,ROWS);drawMatrix(grid,{x:0,y:0});drawMatrix(player.matrix,player.pos)}
 function collide(){const m=player.matrix,o=player.pos;for(let y=0;y<m.length;y++)for(let x=0;x<m[y].length;x++)if(m[y][x]&&(grid[y+o.y]&&grid[y+o.y][x+o.x])!==0)return true;return false}
 function merge(){player.matrix.forEach((row,y)=>row.forEach((v,x)=>{if(v)grid[y+player.pos.y][x+player.pos.x]=v}))}
 function rotate(m){for(let y=0;y<m.length;y++)for(let x=0;x<y;x++)[m[x][y],m[y][x]]=[m[y][x],m[x][y]];m.forEach(r=>r.reverse())}
-function reset(){player.matrix=createPiece();player.pos.y=0;player.pos.x=4;if(collide()){easyBottom();score=0;scoreEl.textContent=score;showCheer()}}
-function clearLines(){let lines=0;outer:for(let y=grid.length-1;y>=0;y--){for(let x=0;x<COLS;x++)if(grid[y][x]===0)continue outer;grid.splice(y,1);grid.unshift(Array(COLS).fill(0));y++;lines++}if(lines){score+=lines*100;scoreEl.textContent=score;showCheer();if(grid.slice(ROWS-4).every(r=>r.every(v=>v===0)))easyBottom()}}
-function drop(){player.pos.y++;if(collide()){player.pos.y--;merge();clearLines();reset()}dropCounter=0}
+function reset(){player.matrix=createPiece();player.pos.y=0;player.pos.x=Math.floor(COLS/2)-Math.floor(player.matrix[0].length/2);if(collide()){grid=arena();score=0;scoreEl.textContent=score;showBurst()}}
+function clearLines(){let lines=0;outer:for(let y=grid.length-1;y>=0;y--){for(let x=0;x<COLS;x++)if(grid[y][x]===0)continue outer;grid.splice(y,1);grid.unshift(Array(COLS).fill(0));y++;lines++}if(lines){score+=lines*100;scoreEl.textContent=score;showBurst()}}
+function lockPiece(){merge();score+=10;scoreEl.textContent=score;showBurst();clearLines();reset()}
+function drop(){player.pos.y++;if(collide()){player.pos.y--;lockPiece()}dropCounter=0}
 function move(dir){player.pos.x+=dir;if(collide())player.pos.x-=dir}
 function rotatePlayer(){const pos=player.pos.x;let offset=1;rotate(player.matrix);while(collide()){player.pos.x+=offset;offset=-(offset+(offset>0?1:-1));if(Math.abs(offset)>player.matrix[0].length+1){rotate(player.matrix);rotate(player.matrix);rotate(player.matrix);player.pos.x=pos;return}}}
 function update(t=0){const delta=t-last;last=t;if(playing){dropCounter+=delta;if(dropCounter>dropInterval)drop();draw()}requestAnimationFrame(update)}
 document.addEventListener('keydown',e=>{if(e.key==='ArrowLeft')move(-1);if(e.key==='ArrowRight')move(1);if(e.key==='ArrowDown')drop();if(e.key==='ArrowUp')rotatePlayer()});
-document.getElementById('left').onclick=()=>move(-1);document.getElementById('right').onclick=()=>move(1);document.getElementById('down').onclick=drop;document.getElementById('rotate').onclick=rotatePlayer;document.getElementById('drop').onclick=()=>{while(!collide())player.pos.y++;player.pos.y--;merge();clearLines();reset()};document.getElementById('start').onclick=()=>{playing=true;easyBottom();showCheer();reset()};
-easyBottom();reset();draw();update();setInterval(()=>{if(playing)showCheer()},9000);
+document.getElementById('left').onclick=()=>move(-1);document.getElementById('right').onclick=()=>move(1);document.getElementById('down').onclick=drop;document.getElementById('rotate').onclick=rotatePlayer;document.getElementById('drop').onclick=()=>{while(!collide())player.pos.y++;player.pos.y--;lockPiece()};document.getElementById('start').onclick=()=>{playing=true;showBurst()};
+reset();draw();update();
 </script>
 </body>
 </html>

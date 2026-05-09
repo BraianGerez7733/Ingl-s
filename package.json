@@ -9,6 +9,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@headlessui/vue": "latest",
+    "@heroicons/vue": "latest",
     "@tailwindcss/vite": "latest",
     "@vitejs/plugin-vue": "latest",
     "vite": "latest",

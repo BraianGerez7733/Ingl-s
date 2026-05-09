@@ -16,6 +16,7 @@
           <a href="#especialidad" class="hover:text-[#533afd]">Especialidad</a>
           <a href="#metodo" class="hover:text-[#533afd]">Método</a>
           <a href="#casos" class="hover:text-[#533afd]">Casos</a>
+          <a href="#faq" class="hover:text-[#533afd]">FAQ</a>
           <a href="#contacto" class="hover:text-[#533afd]">Contacto</a>
         </nav>
 
@@ -46,21 +47,6 @@
               Ver metodología
             </a>
           </div>
-
-          <dl class="mt-10 grid max-w-2xl grid-cols-3 gap-4 text-[#0d253d]">
-            <div>
-              <dt class="text-[11px] font-light text-[#64748d]">Foco</dt>
-              <dd class="mt-1 text-[14px] font-light tracking-[-0.42px] [font-feature-settings:'tnum']">Laboral / ART</dd>
-            </div>
-            <div>
-              <dt class="text-[11px] font-light text-[#64748d]">Atención</dt>
-              <dd class="mt-1 text-[14px] font-light tracking-[-0.42px] [font-feature-settings:'tnum']">Argentina</dd>
-            </div>
-            <div>
-              <dt class="text-[11px] font-light text-[#64748d]">Canal</dt>
-              <dd class="mt-1 text-[14px] font-light tracking-[-0.42px] [font-feature-settings:'tnum']">WhatsApp</dd>
-            </div>
-          </dl>
         </div>
 
         <div class="relative">
@@ -109,14 +95,6 @@
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-
-          <div class="absolute -bottom-8 -left-6 hidden w-64 rounded-xl bg-white p-4 shadow-[rgba(0,55,112,0.08)_0_8px_24px,rgba(0,55,112,0.04)_0_2px_6px] ring-1 ring-[#e3e8ee] lg:block">
-            <p class="text-[11px] font-light text-[#64748d]">Resultado buscado</p>
-            <p class="mt-2 text-[26px] font-light tracking-[-0.26px] text-[#0d253d]">Reparación justa</p>
-            <div class="mt-4 h-2 rounded-full bg-[#f6f9fc]">
-              <div class="h-2 w-4/5 rounded-full bg-[#533afd]"></div>
             </div>
           </div>
         </div>
@@ -179,6 +157,38 @@
       </div>
     </section>
 
+    <section id="faq" class="bg-[#f6f9fc] py-20 sm:py-24">
+      <div class="mx-auto grid max-w-7xl gap-10 px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
+        <div>
+          <p class="text-[10px] font-medium uppercase tracking-[0.1px] text-[#4434d4]">Preguntas frecuentes</p>
+          <h2 class="mt-3 text-[36px] font-light leading-[1.12] tracking-[-0.96px] sm:text-[48px]">Información inicial antes de consultar.</h2>
+          <p class="mt-5 text-[15px] font-light leading-[1.6] text-[#273951]">Este bloque usa Headless UI Disclosure, adaptado al diseño premium de la landing.</p>
+        </div>
+
+        <div class="w-full rounded-2xl bg-white p-2 shadow-[rgba(0,55,112,0.08)_0_8px_24px,rgba(0,55,112,0.04)_0_2px_6px] ring-1 ring-[#e3e8ee]">
+          <Disclosure v-slot="{ open }">
+            <DisclosureButton class="flex w-full justify-between rounded-lg bg-[#f6f9fc] px-4 py-3 text-left text-sm font-medium text-[#0d253d] hover:bg-[#eef2ff] focus:outline-none focus-visible:ring focus-visible:ring-[#533afd]/75">
+              <span>What is your refund policy?</span>
+              <ChevronUpIcon :class="open ? 'rotate-180 transform' : ''" class="h-5 w-5 text-[#533afd] transition" />
+            </DisclosureButton>
+            <DisclosurePanel class="px-4 pb-2 pt-4 text-sm leading-6 text-[#64748d]">
+              If you're unhappy with your purchase for any reason, email us within 90 days and we'll refund you in full, no questions asked.
+            </DisclosurePanel>
+          </Disclosure>
+
+          <Disclosure as="div" class="mt-2" v-slot="{ open }">
+            <DisclosureButton class="flex w-full justify-between rounded-lg bg-[#f6f9fc] px-4 py-3 text-left text-sm font-medium text-[#0d253d] hover:bg-[#eef2ff] focus:outline-none focus-visible:ring focus-visible:ring-[#533afd]/75">
+              <span>Do you offer technical support?</span>
+              <ChevronUpIcon :class="open ? 'rotate-180 transform' : ''" class="h-5 w-5 text-[#533afd] transition" />
+            </DisclosureButton>
+            <DisclosurePanel class="px-4 pb-2 pt-4 text-sm leading-6 text-[#64748d]">
+              No.
+            </DisclosurePanel>
+          </Disclosure>
+        </div>
+      </div>
+    </section>
+
     <section id="contacto" class="py-20 sm:py-28">
       <div class="mx-auto max-w-5xl px-6 text-center lg:px-8">
         <p class="text-[10px] font-medium uppercase tracking-[0.1px] text-[#4434d4]">Contacto</p>
@@ -205,39 +215,21 @@
 </template>
 
 <script setup>
+import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue'
+import { ChevronUpIcon } from '@heroicons/vue/20/solid'
+
 const year = new Date().getFullYear()
 
 const specialties = [
-  {
-    icon: '⚖️',
-    title: 'Accidentes de trabajo',
-    copy: 'Reclamos por siniestros laborales, prestaciones médicas, incapacidad, ILT y seguimiento ante ART.',
-  },
-  {
-    icon: '🩺',
-    title: 'Enfermedades profesionales',
-    copy: 'Análisis de nexo causal, tareas habituales, documentación clínica y estrategia probatoria.',
-  },
-  {
-    icon: '📄',
-    title: 'Apelaciones ART',
-    copy: 'Impugnación de dictámenes, control de porcentajes de incapacidad y revisión judicial de decisiones administrativas.',
-  },
+  { icon: '⚖️', title: 'Accidentes de trabajo', copy: 'Reclamos por siniestros laborales, prestaciones médicas, incapacidad, ILT y seguimiento ante ART.' },
+  { icon: '🩺', title: 'Enfermedades profesionales', copy: 'Análisis de nexo causal, tareas habituales, documentación clínica y estrategia probatoria.' },
+  { icon: '📄', title: 'Apelaciones ART', copy: 'Impugnación de dictámenes, control de porcentajes de incapacidad y revisión judicial de decisiones administrativas.' },
 ]
 
 const steps = [
-  {
-    title: 'Diagnóstico inicial del caso',
-    copy: 'Se identifican hechos, fechas, empleador, ART, diagnóstico, documentación médica y estado del trámite.',
-  },
-  {
-    title: 'Estrategia documental y procesal',
-    copy: 'Se ordena la prueba necesaria y se define si corresponde vía administrativa, apelación o acción judicial.',
-  },
-  {
-    title: 'Seguimiento hasta resolución',
-    copy: 'Control de plazos, audiencias, dictámenes, pericias, liquidaciones, intimaciones y ejecución de sentencia.',
-  },
+  { title: 'Diagnóstico inicial del caso', copy: 'Se identifican hechos, fechas, empleador, ART, diagnóstico, documentación médica y estado del trámite.' },
+  { title: 'Estrategia documental y procesal', copy: 'Se ordena la prueba necesaria y se define si corresponde vía administrativa, apelación o acción judicial.' },
+  { title: 'Seguimiento hasta resolución', copy: 'Control de plazos, audiencias, dictámenes, pericias, liquidaciones, intimaciones y ejecución de sentencia.' },
 ]
 
 const caseTypes = [
